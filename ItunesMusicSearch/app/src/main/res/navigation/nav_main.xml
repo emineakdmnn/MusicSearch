@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/search_fragment">
+
+    <fragment
+        android:id="@+id/search_fragment"
+        android:name="com.emineakduman.itunesmusicsearch.ui.SearchFragment"
+        tools:layout="@layout/fragment_search">
+
+        <action
+            android:id="@+id/action_search_fragment_to_track_fragment"
+            app:destination="@id/track_fragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/track_fragment"
+        android:name="com.emineakduman.itunesmusicsearch.ui.TrackFragment"
+        tools:layout="@layout/fragment_track">
+
+        <argument
+            android:name="track"
+            app:argType="com.emineakduman.itunesmusicsearch.data.Track"
+            app:nullable="true" />
+    </fragment>
+
+</navigation>

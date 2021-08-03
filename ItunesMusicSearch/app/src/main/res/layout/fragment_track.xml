@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="track"
+            type="com.emineakduman.itunesmusicsearch.data.Track" />
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/track_icon"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/track_detail_icon_height"
+                android:scaleType="centerCrop"
+                app:imageFromUrl="@{track.artworkUrl100}"
+                app:layout_constraintBottom_toTopOf="@id/track_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/track_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:padding="@dimen/margin_normal"
+                android:text="@{track.trackName}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                app:drawableEndCompat="@drawable/ic_baseline_music_note_24"
+                app:explicitness="@{track.trackExplicitness}"
+                app:externalLink="@{track.trackViewUrl}"
+                app:layout_constraintBottom_toTopOf="@id/track_genre"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/track_icon"
+                tools:text="" />
+
+            <TextView
+                android:id="@+id/track_genre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:padding="@dimen/margin_normal"
+                android:text="@{track.primaryGenreName}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                app:layout_constraintBottom_toTopOf="@id/artist_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/track_name"
+                tools:text="Rock" />
+
+            <TextView
+                android:id="@+id/track_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:padding="@dimen/margin_normal"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                app:layout_constraintBottom_toTopOf="@id/artist_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/track_genre"
+                app:layout_constraintTop_toBottomOf="@id/track_name"
+                app:time="@{track.trackTimeMillis}"
+                tools:text="" />
+
+            <TextView
+                android:id="@+id/artist_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:padding="@dimen/margin_normal"
+                android:text="@{track.artistName}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                app:drawableEndCompat="@drawable/ic_baseline_person_24"
+                app:externalLink="@{track.artistViewUrl}"
+                app:layout_constraintBottom_toTopOf="@id/collection_name"
+                app:layout_constraintEnd_toStartOf="@id/track_price"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/track_genre"
+                tools:text="" />
+
+            <TextView
+                android:id="@+id/track_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:padding="@dimen/margin_normal"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                app:layout_constraintBottom_toTopOf="@id/collection_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/artist_name"
+                app:layout_constraintTop_toBottomOf="@id/track_genre"
+                app:price="@{track}"
+                tools:text="" />
+
+            <TextView
+                android:id="@+id/collection_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:padding="@dimen/margin_normal"
+                android:text="@{track.collectionName}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                app:drawableEndCompat="@drawable/ic_baseline_library_music_24"
+                app:externalLink="@{track.collectionViewUrl}"
+                app:layout_constraintBottom_toTopOf="@id/release_date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/artist_name"
+                tools:text="" />
+
+            <TextView
+                android:id="@+id/release_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/margin_normal"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                app:date="@{track.releaseDate}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/collection_name"
+                tools:text="" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>
