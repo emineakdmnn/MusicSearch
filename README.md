@@ -1,5 +1,4 @@
 # MusicSearch
-# iTunes Music Search
 A simple Master-Detail Android Application using search results from iTunes Store API
 
 # Overview
